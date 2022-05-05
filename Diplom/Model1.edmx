@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Tarasova_DModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="IDapplication" />
+          </Key>
+          <Property Name="IDapplication" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDofficeEmployee" Type="int" />
+          <Property Name="IDproblemType" Type="int" />
+          <Property Name="Files" Type="nvarchar" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="Status" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="IDdepartment" />
+          </Key>
+          <Property Name="IDdepartment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepartmentName" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="OfficeStaff">
+          <Key>
+            <PropertyRef Name="IDofficeEmployee" />
+          </Key>
+          <Property Name="IDofficeEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfficeEmployeeFullName" Type="nvarchar" MaxLength="500" />
+          <Property Name="OfficeEmployeeLogin" Type="nvarchar" MaxLength="500" />
+          <Property Name="OfficeEmployeePassword" Type="nvarchar" MaxLength="500" />
+          <Property Name="IDdepartment" Type="int" />
+        </EntityType>
+        <EntityType Name="SystAdminStaff">
+          <Key>
+            <PropertyRef Name="IDAdminEmployee" />
+          </Key>
+          <Property Name="IDAdminEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminFullName" Type="nvarchar" MaxLength="500" />
+          <Property Name="AdminLogin" Type="nvarchar" MaxLength="500" />
+          <Property Name="AdminPassword" Type="nvarchar" MaxLength="500" />
+          <Property Name="IDdepartment" Type="int" />
+        </EntityType>
+        <EntityType Name="TypeProblem">
+          <Key>
+            <PropertyRef Name="IDtypeProblem" />
+          </Key>
+          <Property Name="IDtypeProblem" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TypeProblem" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_Application_OfficeStaff">
+          <End Role="OfficeStaff" Type="Self.OfficeStaff" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficeStaff">
+              <PropertyRef Name="IDofficeEmployee" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="IDofficeEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_TypeProblem">
+          <End Role="TypeProblem" Type="Self.TypeProblem" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeProblem">
+              <PropertyRef Name="IDtypeProblem" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="IDproblemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeStaff_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="OfficeStaff" Type="Self.OfficeStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IDdepartment" />
+            </Principal>
+            <Dependent Role="OfficeStaff">
+              <PropertyRef Name="IDdepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystAdminStaff_Departments">
+          <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+          <End Role="SystAdminStaff" Type="Self.SystAdminStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IDdepartment" />
+            </Principal>
+            <Dependent Role="SystAdminStaff">
+              <PropertyRef Name="IDdepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище Tarasova_DModelContainer">
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficeStaff" EntityType="Self.OfficeStaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystAdminStaff" EntityType="Self.SystAdminStaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TypeProblem" EntityType="Self.TypeProblem" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Application_OfficeStaff" Association="Self.FK_Application_OfficeStaff">
+            <End Role="OfficeStaff" EntitySet="OfficeStaff" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_TypeProblem" Association="Self.FK_Application_TypeProblem">
+            <End Role="TypeProblem" EntitySet="TypeProblem" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeStaff_Departments" Association="Self.FK_OfficeStaff_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="OfficeStaff" EntitySet="OfficeStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystAdminStaff_Departments" Association="Self.FK_SystAdminStaff_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="SystAdminStaff" EntitySet="SystAdminStaff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Tarasova_DModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Tarasova_DEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Applications" EntityType="Tarasova_DModel.Applications" />
+          <EntitySet Name="Departments" EntityType="Tarasova_DModel.Departments" />
+          <EntitySet Name="OfficeStaff" EntityType="Tarasova_DModel.OfficeStaff" />
+          <EntitySet Name="SystAdminStaff" EntityType="Tarasova_DModel.SystAdminStaff" />
+          <EntitySet Name="TypeProblem" EntityType="Tarasova_DModel.TypeProblem" />
+          <AssociationSet Name="FK_Application_OfficeStaff" Association="Tarasova_DModel.FK_Application_OfficeStaff">
+            <End Role="OfficeStaff" EntitySet="OfficeStaff" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_TypeProblem" Association="Tarasova_DModel.FK_Application_TypeProblem">
+            <End Role="TypeProblem" EntitySet="TypeProblem" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OfficeStaff_Departments" Association="Tarasova_DModel.FK_OfficeStaff_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="OfficeStaff" EntitySet="OfficeStaff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystAdminStaff_Departments" Association="Tarasova_DModel.FK_SystAdminStaff_Departments">
+            <End Role="Departments" EntitySet="Departments" />
+            <End Role="SystAdminStaff" EntitySet="SystAdminStaff" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="IDapplication" />
+          </Key>
+          <Property Name="IDapplication" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDofficeEmployee" Type="Int32" />
+          <Property Name="IDproblemType" Type="Int32" />
+          <Property Name="Files" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="OfficeStaff" Relationship="Tarasova_DModel.FK_Application_OfficeStaff" FromRole="Applications" ToRole="OfficeStaff" />
+          <NavigationProperty Name="TypeProblem" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="Applications" ToRole="TypeProblem" />
+        </EntityType>
+        <EntityType Name="Departments">
+          <Key>
+            <PropertyRef Name="IDdepartment" />
+          </Key>
+          <Property Name="IDdepartment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepartmentName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OfficeStaff" Relationship="Tarasova_DModel.FK_OfficeStaff_Departments" FromRole="Departments" ToRole="OfficeStaff" />
+          <NavigationProperty Name="SystAdminStaff" Relationship="Tarasova_DModel.FK_SystAdminStaff_Departments" FromRole="Departments" ToRole="SystAdminStaff" />
+        </EntityType>
+        <EntityType Name="OfficeStaff">
+          <Key>
+            <PropertyRef Name="IDofficeEmployee" />
+          </Key>
+          <Property Name="IDofficeEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfficeEmployeeFullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeEmployeeLogin" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="OfficeEmployeePassword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IDdepartment" Type="Int32" />
+          <NavigationProperty Name="Applications" Relationship="Tarasova_DModel.FK_Application_OfficeStaff" FromRole="OfficeStaff" ToRole="Applications" />
+          <NavigationProperty Name="Departments" Relationship="Tarasova_DModel.FK_OfficeStaff_Departments" FromRole="OfficeStaff" ToRole="Departments" />
+        </EntityType>
+        <EntityType Name="SystAdminStaff">
+          <Key>
+            <PropertyRef Name="IDAdminEmployee" />
+          </Key>
+          <Property Name="IDAdminEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminFullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AdminLogin" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="AdminPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IDdepartment" Type="Int32" />
+          <NavigationProperty Name="Departments" Relationship="Tarasova_DModel.FK_SystAdminStaff_Departments" FromRole="SystAdminStaff" ToRole="Departments" />
+        </EntityType>
+        <EntityType Name="TypeProblem">
+          <Key>
+            <PropertyRef Name="IDtypeProblem" />
+          </Key>
+          <Property Name="IDtypeProblem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeProblem1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applications" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="TypeProblem" ToRole="Applications" />
+        </EntityType>
+        <Association Name="FK_Application_OfficeStaff">
+          <End Type="Tarasova_DModel.OfficeStaff" Role="OfficeStaff" Multiplicity="0..1" />
+          <End Type="Tarasova_DModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OfficeStaff">
+              <PropertyRef Name="IDofficeEmployee" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="IDofficeEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Application_TypeProblem">
+          <End Type="Tarasova_DModel.TypeProblem" Role="TypeProblem" Multiplicity="0..1" />
+          <End Type="Tarasova_DModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeProblem">
+              <PropertyRef Name="IDtypeProblem" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="IDproblemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OfficeStaff_Departments">
+          <End Type="Tarasova_DModel.Departments" Role="Departments" Multiplicity="0..1" />
+          <End Type="Tarasova_DModel.OfficeStaff" Role="OfficeStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IDdepartment" />
+            </Principal>
+            <Dependent Role="OfficeStaff">
+              <PropertyRef Name="IDdepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystAdminStaff_Departments">
+          <End Type="Tarasova_DModel.Departments" Role="Departments" Multiplicity="0..1" />
+          <End Type="Tarasova_DModel.SystAdminStaff" Role="SystAdminStaff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departments">
+              <PropertyRef Name="IDdepartment" />
+            </Principal>
+            <Dependent Role="SystAdminStaff">
+              <PropertyRef Name="IDdepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Tarasova_DModelContainer" CdmEntityContainer="Tarasova_DEntities">
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="Tarasova_DModel.Applications">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Files" ColumnName="Files" />
+                <ScalarProperty Name="IDproblemType" ColumnName="IDproblemType" />
+                <ScalarProperty Name="IDofficeEmployee" ColumnName="IDofficeEmployee" />
+                <ScalarProperty Name="IDapplication" ColumnName="IDapplication" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="Tarasova_DModel.Departments">
+              <MappingFragment StoreEntitySet="Departments">
+                <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+                <ScalarProperty Name="IDdepartment" ColumnName="IDdepartment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficeStaff">
+            <EntityTypeMapping TypeName="Tarasova_DModel.OfficeStaff">
+              <MappingFragment StoreEntitySet="OfficeStaff">
+                <ScalarProperty Name="IDdepartment" ColumnName="IDdepartment" />
+                <ScalarProperty Name="OfficeEmployeePassword" ColumnName="OfficeEmployeePassword" />
+                <ScalarProperty Name="OfficeEmployeeLogin" ColumnName="OfficeEmployeeLogin" />
+                <ScalarProperty Name="OfficeEmployeeFullName" ColumnName="OfficeEmployeeFullName" />
+                <ScalarProperty Name="IDofficeEmployee" ColumnName="IDofficeEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystAdminStaff">
+            <EntityTypeMapping TypeName="Tarasova_DModel.SystAdminStaff">
+              <MappingFragment StoreEntitySet="SystAdminStaff">
+                <ScalarProperty Name="IDdepartment" ColumnName="IDdepartment" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+                <ScalarProperty Name="AdminLogin" ColumnName="AdminLogin" />
+                <ScalarProperty Name="AdminFullName" ColumnName="AdminFullName" />
+                <ScalarProperty Name="IDAdminEmployee" ColumnName="IDAdminEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TypeProblem">
+            <EntityTypeMapping TypeName="Tarasova_DModel.TypeProblem">
+              <MappingFragment StoreEntitySet="TypeProblem">
+                <ScalarProperty Name="TypeProblem1" ColumnName="TypeProblem" />
+                <ScalarProperty Name="IDtypeProblem" ColumnName="IDtypeProblem" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
