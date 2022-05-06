@@ -16,23 +16,13 @@ using System.Windows.Shapes;
 namespace Diplom.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PageOffice.xaml
+    /// Логика взаимодействия для PageApplication.xaml
     /// </summary>
-    public partial class PageOffice : Page
+    public partial class PageApplication : Page
     {
-        public PageOffice()
+        public PageApplication()
         {
             InitializeComponent();
-        }
-
-        private void btnContacts_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Телефон: 235468, Алексей");
-        }
-
-        private void btnExit_Click(object sender, RoutedEventArgs e)
-        {
-            LoadPages.MainFrame.Navigate(new PageAuth());
         }
     }
 }

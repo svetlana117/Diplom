@@ -16,6 +16,9 @@
         <Style x:Key="txt3" TargetType="TextBlock">
             <Setter Property="FontSize" Value="25"></Setter>
         </Style>
+        <Style x:Key="txt4" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"></Setter>
+        </Style>
         <Style x:Key="btn1" TargetType="Button">
             <Setter Property="Background" Value="DarkCyan"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
