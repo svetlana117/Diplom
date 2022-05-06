@@ -8,9 +8,19 @@
             <Setter Property="FontSize" Value="27"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
         </Style>
+        <Style x:Key="txt2" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="30"></Setter>
+            <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="TextDecorations" Value="Underline"></Setter>
+        </Style>
+        <Style x:Key="txt3" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="25"></Setter>
+        </Style>
         <Style x:Key="btn1" TargetType="Button">
             <Setter Property="Background" Value="DarkCyan"></Setter>
             <Setter Property="Foreground" Value="White"></Setter>
+            <Setter Property="BorderBrush" Value="White"></Setter>
         </Style>
+        
     </Application.Resources>
 </Application>

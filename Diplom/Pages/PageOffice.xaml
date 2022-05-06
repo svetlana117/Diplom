@@ -9,6 +9,16 @@
       Title="PageOffice">
 
     <Grid>
-        <StackPanel Background="DeepPink"></StackPanel>
+        <StackPanel Background="Black" Height="150" VerticalAlignment="Top">
+            <TextBlock Text="ПОМОЩЬ СИСТЕМНЫХ АДМИНИСТРАТОРОВ" Style="{StaticResource txt2}" HorizontalAlignment="Center" Margin="20"></TextBlock>
+            <StackPanel Orientation="Horizontal" Width="525" >
+                <Button x:Name="btnApplication" Width="125" Height="25" Content="Остаить заявку" Style="{StaticResource btn1}" Margin="25"></Button>
+                <Button x:Name="btnContacts" Width="125" Height="25" Content="Контакты" Style="{StaticResource btn1}"  Margin="25"></Button>
+                <Button x:Name="btnExit" Width="125" Height="25" Content="Выход" Style="{StaticResource btn1}"  Margin="25"></Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Vertical" Background="White" Height="300" VerticalAlignment="Bottom">
+            <TextBlock Text="{Binding hello}" Style="{StaticResource txt3}"></TextBlock>
+        </StackPanel>
     </Grid>
 </Page>
