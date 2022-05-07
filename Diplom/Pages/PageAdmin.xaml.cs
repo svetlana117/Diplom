@@ -20,9 +20,11 @@ namespace Diplom.Pages
     /// </summary>
     public partial class PageAdmin : Page
     {
+        List<Applications> ListApplications = Applications.GetApplications();
         public PageAdmin()
         {
             InitializeComponent();
+            lblisApplicationsList.ItemsSource = ListApplications;
         }
     }
 }

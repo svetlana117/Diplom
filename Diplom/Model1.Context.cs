@@ -28,6 +28,7 @@ namespace Diplom
         public virtual DbSet<Applications> Applications { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<OfficeStaff> OfficeStaff { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<SystAdminStaff> SystAdminStaff { get; set; }
         public virtual DbSet<TypeProblem> TypeProblem { get; set; }
     }

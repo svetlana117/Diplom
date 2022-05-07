@@ -17,7 +17,7 @@
             <TextBlock Text="ПОМОЩЬ СИСТЕМНЫХ АДМИНИСТРАТОРОВ" Style="{StaticResource txt2}" HorizontalAlignment="Center" Margin="10"></TextBlock>
             <StackPanel Orientation="Horizontal" Width="700" VerticalAlignment="Bottom" Height="76">
                 <Button x:Name="btnApplication" Width="125" Height="25" Content="Остаить заявку" Style="{StaticResource btn1}" Margin="25" Click="btnApplication_Click"/>
-                <Button x:Name="btnMyApplication" Width="125" Height="25" Content="Мои заявки" Style="{StaticResource btn1}" Margin="25"/>
+                <Button x:Name="btnMyApplication" Width="125" Height="25" Content="Мои заявки" Style="{StaticResource btn1}" Margin="25" Click="btnMyApplication_Click"/>
                 <Button x:Name="btnContacts" Width="125" Height="25" Content="Контакты" Style="{StaticResource btn1}"  Margin="25" Click="btnContacts_Click"/>
                 <Button x:Name="btnExit" Width="125" Height="25" Content="Выход" Style="{StaticResource btn1}"  Margin="25" Click="btnExit_Click"/>
             </StackPanel>

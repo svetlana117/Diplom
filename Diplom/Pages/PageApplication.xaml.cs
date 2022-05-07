@@ -73,12 +73,15 @@ namespace Diplom.Pages
 
         private void btnSendApp_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-            //
+            //try
+            //{
+            //    if(txtxDescription.Text!="" && cbTypeProblem.Text!="")
+            //    {
+                    
+            //    }
+            //}
+            //catch (Exception ex) { MessageBox.Show(ex.Message); }
+            ////
             //try
             //{
             //    material.Title = TBName.Text;
@@ -154,6 +157,16 @@ namespace Diplom.Pages
             //    }
             //    catch { }
             //}
+        }
+
+        private void btnContacts_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Телефон: 235468, Алексей\nПервый корпус, вход у урологического  отдела слева.");
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPages.MainFrame.Navigate(new PageAuth());
         }
     }
 }

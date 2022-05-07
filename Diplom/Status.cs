@@ -12,17 +12,18 @@ namespace Diplom
     using System;
     using System.Collections.Generic;
     
-    public partial class Applications
+    public partial class Status
     {
-        public int IDapplication { get; set; }
-        public Nullable<int> IDofficeEmployee { get; set; }
-        public Nullable<int> IDproblemType { get; set; }
-        public string Files { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> Status { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Status()
+        {
+            this.Applications = new HashSet<Applications>();
+        }
     
-        public virtual OfficeStaff OfficeStaff { get; set; }
-        public virtual TypeProblem TypeProblem { get; set; }
-        public virtual Status Status1 { get; set; }
+        public int IDstatus { get; set; }
+        public string NameStatus { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Applications> Applications { get; set; }
     }
 }

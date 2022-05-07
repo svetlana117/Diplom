@@ -27,7 +27,7 @@ namespace Diplom.Pages
 
         private void btnContacts_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Телефон: 235468, Алексей");
+            MessageBox.Show("Телефон: 235468, Алексей\nПервый корпус, вход у урологического  отдела слева.");
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -38,6 +38,11 @@ namespace Diplom.Pages
         private void btnApplication_Click(object sender, RoutedEventArgs e)
         {
             LoadPages.MainFrame.Navigate(new PageApplication());
+        }
+
+        private void btnMyApplication_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPages.MainFrame.Navigate(new PageAdmin());
         }
     }
 }

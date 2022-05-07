@@ -14,7 +14,7 @@
           <Property Name="IDproblemType" Type="int" />
           <Property Name="Files" Type="nvarchar" MaxLength="500" />
           <Property Name="Description" Type="nvarchar" MaxLength="500" />
-          <Property Name="Status" Type="nchar" MaxLength="10" />
+          <Property Name="Status" Type="int" />
         </EntityType>
         <EntityType Name="Departments">
           <Key>
@@ -32,6 +32,13 @@
           <Property Name="OfficeEmployeeLogin" Type="nvarchar" MaxLength="500" />
           <Property Name="OfficeEmployeePassword" Type="nvarchar" MaxLength="500" />
           <Property Name="IDdepartment" Type="int" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="IDstatus" />
+          </Key>
+          <Property Name="IDstatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameStatus" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="SystAdminStaff">
           <Key>
@@ -74,6 +81,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Applications_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+          <End Role="Applications" Type="Self.Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="IDstatus" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="Status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OfficeStaff_Departments">
           <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
           <End Role="OfficeStaff" Type="Self.OfficeStaff" Multiplicity="*" />
@@ -102,6 +121,7 @@
           <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Departments" EntityType="Self.Departments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OfficeStaff" EntityType="Self.OfficeStaff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SystAdminStaff" EntityType="Self.SystAdminStaff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TypeProblem" EntityType="Self.TypeProblem" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Application_OfficeStaff" Association="Self.FK_Application_OfficeStaff">
@@ -110,6 +130,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Application_TypeProblem" Association="Self.FK_Application_TypeProblem">
             <End Role="TypeProblem" EntitySet="TypeProblem" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_Status" Association="Self.FK_Applications_Status">
+            <End Role="Status" EntitySet="Status" />
             <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
           <AssociationSet Name="FK_OfficeStaff_Departments" Association="Self.FK_OfficeStaff_Departments">
@@ -129,6 +153,7 @@
           <EntitySet Name="Applications" EntityType="Tarasova_DModel.Applications" />
           <EntitySet Name="Departments" EntityType="Tarasova_DModel.Departments" />
           <EntitySet Name="OfficeStaff" EntityType="Tarasova_DModel.OfficeStaff" />
+          <EntitySet Name="Status" EntityType="Tarasova_DModel.Status" />
           <EntitySet Name="SystAdminStaff" EntityType="Tarasova_DModel.SystAdminStaff" />
           <EntitySet Name="TypeProblem" EntityType="Tarasova_DModel.TypeProblem" />
           <AssociationSet Name="FK_Application_OfficeStaff" Association="Tarasova_DModel.FK_Application_OfficeStaff">
@@ -137,6 +162,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Application_TypeProblem" Association="Tarasova_DModel.FK_Application_TypeProblem">
             <End Role="TypeProblem" EntitySet="TypeProblem" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Applications_Status" Association="Tarasova_DModel.FK_Applications_Status">
+            <End Role="Status" EntitySet="Status" />
             <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
           <AssociationSet Name="FK_OfficeStaff_Departments" Association="Tarasova_DModel.FK_OfficeStaff_Departments">
@@ -157,9 +186,10 @@
           <Property Name="IDproblemType" Type="Int32" />
           <Property Name="Files" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="OfficeStaff" Relationship="Tarasova_DModel.FK_Application_OfficeStaff" FromRole="Applications" ToRole="OfficeStaff" />
           <NavigationProperty Name="TypeProblem" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="Applications" ToRole="TypeProblem" />
+          <NavigationProperty Name="Status1" Relationship="Tarasova_DModel.FK_Applications_Status" FromRole="Applications" ToRole="Status" />
         </EntityType>
         <EntityType Name="Departments">
           <Key>
@@ -181,6 +211,14 @@
           <Property Name="IDdepartment" Type="Int32" />
           <NavigationProperty Name="Applications" Relationship="Tarasova_DModel.FK_Application_OfficeStaff" FromRole="OfficeStaff" ToRole="Applications" />
           <NavigationProperty Name="Departments" Relationship="Tarasova_DModel.FK_OfficeStaff_Departments" FromRole="OfficeStaff" ToRole="Departments" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="IDstatus" />
+          </Key>
+          <Property Name="IDstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameStatus" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applications" Relationship="Tarasova_DModel.FK_Applications_Status" FromRole="Status" ToRole="Applications" />
         </EntityType>
         <EntityType Name="SystAdminStaff">
           <Key>
@@ -222,6 +260,18 @@
             </Principal>
             <Dependent Role="Applications">
               <PropertyRef Name="IDproblemType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Applications_Status">
+          <End Type="Tarasova_DModel.Status" Role="Status" Multiplicity="0..1" />
+          <End Type="Tarasova_DModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="IDstatus" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="Status" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -283,6 +333,14 @@
                 <ScalarProperty Name="OfficeEmployeeLogin" ColumnName="OfficeEmployeeLogin" />
                 <ScalarProperty Name="OfficeEmployeeFullName" ColumnName="OfficeEmployeeFullName" />
                 <ScalarProperty Name="IDofficeEmployee" ColumnName="IDofficeEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="Tarasova_DModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="NameStatus" ColumnName="NameStatus" />
+                <ScalarProperty Name="IDstatus" ColumnName="IDstatus" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

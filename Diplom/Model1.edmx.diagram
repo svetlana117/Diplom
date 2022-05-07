@@ -5,13 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9937f7d85b3d4d4aa1ab32d05d1708c5" Name="Diagram1" ZoomLevel="95">
-        <EntityTypeShape EntityType="Tarasova_DModel.Applications" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="Tarasova_DModel.Applications" Width="1.5" PointX="5.25" PointY="4" />
         <EntityTypeShape EntityType="Tarasova_DModel.Departments" Width="1.5" PointX="0.75" PointY="3" />
-        <EntityTypeShape EntityType="Tarasova_DModel.OfficeStaff" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="Tarasova_DModel.SystAdminStaff" Width="1.5" PointX="3" PointY="4.25" />
-        <EntityTypeShape EntityType="Tarasova_DModel.TypeProblem" Width="1.5" PointX="3" PointY="7.625" />
+        <EntityTypeShape EntityType="Tarasova_DModel.OfficeStaff" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="Tarasova_DModel.Status" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="Tarasova_DModel.SystAdminStaff" Width="1.5" PointX="3" PointY="1.25" />
+        <EntityTypeShape EntityType="Tarasova_DModel.TypeProblem" Width="1.5" PointX="3" PointY="7.375" />
         <AssociationConnector Association="Tarasova_DModel.FK_Application_OfficeStaff" />
         <AssociationConnector Association="Tarasova_DModel.FK_Application_TypeProblem" />
+        <AssociationConnector Association="Tarasova_DModel.FK_Applications_Status" />
         <AssociationConnector Association="Tarasova_DModel.FK_OfficeStaff_Departments" />
         <AssociationConnector Association="Tarasova_DModel.FK_SystAdminStaff_Departments" />
       </Diagram>

@@ -75,12 +75,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelApplications.cs" />
     <Compile Include="ModelEmployee.cs" />
     <Compile Include="OfficeStaff.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageApplication.xaml.cs">
       <DependentUpon>PageApplication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Status.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="SystAdminStaff.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -174,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="img\pp.png" />
+    <Content Include="img\picture.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
