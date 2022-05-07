@@ -9,6 +9,30 @@
       Title="PageApplication">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="Black" Height="150" VerticalAlignment="Top" Grid.Row="0">
+            <TextBlock Text="ПОМОЩЬ СИСТЕМНЫХ АДМИНИСТРАТОРОВ" Style="{StaticResource txt2}" HorizontalAlignment="Center" Margin="10"></TextBlock>
+            <StackPanel Orientation="Horizontal" Width="525" VerticalAlignment="Bottom" Height="76">
+                <Button x:Name="btnMyApplication" Width="125" Height="25" Content="Мои заявки" Style="{StaticResource btn1}" Margin="25"/>
+                <Button x:Name="btnContacts" Width="125" Height="25" Content="Контакты" Style="{StaticResource btn1}"  Margin="25" />
+                <Button x:Name="btnExit" Width="125" Height="25" Content="Выход" Style="{StaticResource btn1}"  Margin="25" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Width="300" Height="200">
+            <GroupBox Header="Описание проблемы">
+                <TextBox Name="txtxDescription" Height="50"></TextBox>
+            </GroupBox>
+            <GroupBox Header="Тип проблемы">
+                <ComboBox Name="cbTypeProblem"></ComboBox>
+            </GroupBox>
+            <ListBox Name="lbFiles" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnFile" Content="Прикрепить файл" Width="150"></Button>
+                <Button x:Name="btnSendApp" Content="Отправить заявку" Width="150"></Button>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Page>

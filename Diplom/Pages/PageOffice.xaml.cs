@@ -34,5 +34,10 @@ namespace Diplom.Pages
         {
             LoadPages.MainFrame.Navigate(new PageAuth());
         }
+
+        private void btnApplication_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPages.MainFrame.Navigate(new PageApplication());
+        }
     }
 }
