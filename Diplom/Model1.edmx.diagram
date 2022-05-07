@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="Tarasova_DModel.Departments" Width="1.5" PointX="0.75" PointY="3" />
         <EntityTypeShape EntityType="Tarasova_DModel.OfficeStaff" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="Tarasova_DModel.SystAdminStaff" Width="1.5" PointX="3" PointY="4.25" />
-        <EntityTypeShape EntityType="Tarasova_DModel.TypeProblem" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="Tarasova_DModel.TypeProblem" Width="1.5" PointX="3" PointY="7.625" />
         <AssociationConnector Association="Tarasova_DModel.FK_Application_OfficeStaff" />
         <AssociationConnector Association="Tarasova_DModel.FK_Application_TypeProblem" />
         <AssociationConnector Association="Tarasova_DModel.FK_OfficeStaff_Departments" />

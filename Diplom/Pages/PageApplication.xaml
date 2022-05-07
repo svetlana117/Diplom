@@ -30,8 +30,8 @@
             </GroupBox>
             <ListBox Name="lbFiles" />
             <StackPanel Orientation="Horizontal">
-                <Button x:Name="btnFile" Content="Прикрепить файл" Width="150"></Button>
-                <Button x:Name="btnSendApp" Content="Отправить заявку" Width="150"></Button>
+                <Button x:Name="btnFile" Content="Прикрепить файл" Width="150" Click="btnFile_Click" Style="{StaticResource btn1}"></Button>
+                <Button x:Name="btnSendApp" Content="Отправить заявку" Width="150" Style="{StaticResource btn1}" Click="btnSendApp_Click"></Button>
             </StackPanel>
         </StackPanel>
     </Grid>
