@@ -22,6 +22,7 @@ namespace Diplom.Pages
     /// </summary>
     public partial class PageApplication : Page
     {
+        Applications applications;
         public PageApplication()
         {
             InitializeComponent();
@@ -35,7 +36,8 @@ namespace Diplom.Pages
             cbTypeProblem.ItemsSource = problemType.ToList();
             cbTypeProblem.SelectedIndex = 0;
 
-            
+
+
         }
         private void btnFile_Click(object sender, RoutedEventArgs e)
         {
@@ -73,11 +75,35 @@ namespace Diplom.Pages
 
         private void btnSendApp_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if(txtxDescription.Text!=""&& cbTypeProblem.Text!="")
+                {
+                    applications.Description = txtxDescription.Text;
+                    TypeProblem ty = BaseConnect.BaseModel.TypeProblem.FirstOrDefault(x => x.IDtypeProblem == applications.IDproblemType);
+                    if(cbTypeProblem.Text== "Периферия")
+                    {
+                        applications.IDproblemType = '1';
+                    }
+                    if (cbTypeProblem.Text == "Интернет")
+                    {
+                        applications.IDproblemType = '2';
+                    }
+                    if (cbTypeProblem.Text == "Программная ошибка")
+                    {
+                        applications.IDproblemType = '3';
+                    }
+                    BaseConnect.BaseModel.Applications.Add(applications);
+                    BaseConnect.BaseModel.SaveChanges();
+                    MessageBox.Show("Заявка отправлена");
+                }
+            }
+            catch (Exception ex) { MessageBox.Show("Поля не могут быть пустыми"); }
             //try
             //{
             //    if(txtxDescription.Text!="" && cbTypeProblem.Text!="")
             //    {
-                    
+
             //    }
             //}
             //catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -168,5 +194,7 @@ namespace Diplom.Pages
         {
             LoadPages.MainFrame.Navigate(new PageAuth());
         }
+
+        
     }
 }

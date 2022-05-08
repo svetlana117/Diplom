@@ -16,8 +16,9 @@
                         <TextBlock Text="{Binding row1}" TextWrapping="Wrap"></TextBlock>
                         <TextBlock Text="{Binding row2}" TextWrapping="Wrap"></TextBlock>
                         <TextBlock Text="{Binding row3}" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding row4}" TextWrapping="Wrap"></TextBlock>
                         <StackPanel Height="20">
-                            <Button x:Name="btnEdit" Width="150" Content="Редактировать запись" Click="btnEdit_Click"></Button>
+                            <Button x:Name="btnEdit" Width="150" Content="Редактировать запись" Click="btnEdit_Click" Visibility="Visible"></Button>
                         </StackPanel>
                     </StackPanel>
                     <Image Source="{Binding Img}" Width="100" Height="100"/>

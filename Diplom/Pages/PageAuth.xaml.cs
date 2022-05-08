@@ -20,6 +20,7 @@ namespace Diplom.Pages
     /// </summary>
     public partial class PageAuth : Page
     {
+        
         public PageAuth()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace Diplom.Pages
                 }
             }
             catch { MessageBox.Show("Что-то пошло не так. Попробуйте снова."); }
-
+            
 
         }
     }

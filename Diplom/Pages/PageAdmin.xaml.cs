@@ -25,6 +25,7 @@ namespace Diplom.Pages
         {
             InitializeComponent();
             lblisApplicationsList.ItemsSource = ListApplications;
+            
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
