@@ -25,7 +25,7 @@ namespace Diplom
                 app.row3 = "Статус: " + ss.NameStatus;
                 if (app.Files == "" || app.Files == null)
                 {
-                    app.Img = @"..img\picture.png";
+                    app.Img = @"..\img\picture.jpg";
                 }
                 else
                 {

@@ -26,5 +26,12 @@ namespace Diplom.Pages
             InitializeComponent();
             lblisApplicationsList.ItemsSource = ListApplications;
         }
+
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            gbStatus.Visibility = Visibility.Visible;
+            cbEditStatus.Visibility = Visibility.Visible;
+            btnSave.Visibility = Visibility.Visible;
+        }
     }
 }

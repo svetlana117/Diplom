@@ -12,20 +12,33 @@
         <DataTemplate x:Key="DT">
             <Border BorderBrush="Black" BorderThickness="1" Background="{Binding Background}">
                 <StackPanel Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Text="{Binding row1}"></TextBlock>
-                        <TextBlock Text="{Binding row2}"></TextBlock>
-                        <TextBlock Text="{Binding row3}"></TextBlock>
+                    <StackPanel Orientation="Vertical" Width="350">
+                        <TextBlock Text="{Binding row1}" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding row2}" TextWrapping="Wrap"></TextBlock>
+                        <TextBlock Text="{Binding row3}" TextWrapping="Wrap"></TextBlock>
+                        <StackPanel Height="20">
+                            <Button x:Name="btnEdit" Width="150" Content="Редактировать запись" Click="btnEdit_Click"></Button>
+                        </StackPanel>
                     </StackPanel>
-                    <Image Source="{Binding Img}" Width="70" Height="70"/>
+                    <Image Source="{Binding Img}" Width="100" Height="100"/>
                 </StackPanel>
             </Border>
         </DataTemplate>
     </Page.Resources>
     
-    <Grid>
-        <ListView x:Name="lblisApplicationsList" ItemTemplate="{StaticResource DT}" >
-            
-        </ListView>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <ScrollViewer Grid.Column="0">
+            <ListView x:Name="lblisApplicationsList" ItemTemplate="{StaticResource DT}" ></ListView>
+        </ScrollViewer>
+        <StackPanel Grid.Column="1">
+            <GroupBox Header="Измените статус заявки" Name="gbStatus" Visibility="Hidden">
+                <ComboBox Width="200" Name="cbEditStatus" HorizontalAlignment="Left" Visibility="Hidden"></ComboBox>
+            </GroupBox>
+            <Button x:Name="btnSave" Content="Сохранить" Width="100" HorizontalAlignment="Left" Margin="5" Visibility="Hidden"></Button>
+        </StackPanel>
     </Grid>
 </Page>
