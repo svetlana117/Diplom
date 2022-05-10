@@ -44,18 +44,15 @@ namespace Diplom.Pages
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             if (openFileDialog.ShowDialog() == true)
             {
-
-                foreach (string filename in openFileDialog.FileNames)
-                    lbFiles.Items.Add(System.IO.Path.GetFileName(filename));
+                txtFiles.Text = openFileDialog.FileNames[0];
             }
-
         }
 
         private void btnSendApp_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if(txtxDescription.Text!=""&& cbTypeProblem.Text!="")
+                if(txtxDescription.Text!="" && cbTypeProblem.Text!="")
                 {
                     Applications app = new Applications();
                     app.Description = txtxDescription.Text;
@@ -63,14 +60,13 @@ namespace Diplom.Pages
                     app.IDproblemType = ty.IDtypeProblem;
                     app.Status = 1;
                     app.IDofficeEmployee = CurrentUsers.IDofficeEmployee;
-                    //app.Files =
+                    app.Files = txtFiles.Text;
                     BaseConnect.BaseModel.Applications.Add(app);
                     BaseConnect.BaseModel.SaveChanges();
                     MessageBox.Show("Заявка отправлена");
                 }
             }
             catch (Exception ex) { MessageBox.Show("Поля не могут быть пустыми"); }
-            
         }
 
         private void btnContacts_Click(object sender, RoutedEventArgs e)

@@ -63,5 +63,16 @@ namespace Diplom.Pages
             }
 
         }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            TextBlock textBlock = (TextBlock)sender;
+            Applications applications = BaseConnect.BaseModel.Applications.FirstOrDefault(x => x.IDapplication == (int) textBlock.Tag);
+            string commandText = applications.Files;
+            var proc = new System.Diagnostics.Process();
+            proc.StartInfo.FileName = commandText;
+            proc.StartInfo.UseShellExecute = true;
+            proc.Start();
+        }
     }
 }

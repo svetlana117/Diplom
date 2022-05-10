@@ -8,12 +8,13 @@ namespace Diplom
 {
     public partial class Applications
     {
-        public string Img { get; set; }
+        //public string Img { get; set; }
         public string row1 { get; set; }
         public string row2 { get; set; }
         public string row3 { get; set; }
         public string Visible { get; set; }
         public string row4 { get; set; }
+        public string row5 { get; set; }
         public string btn { get; set; }
         public string Background { get; set; }
         public static List<Applications> GetApplications(SystAdminStaff CurrentUsers)
@@ -29,14 +30,14 @@ namespace Diplom
                 app.row4 = "Автор заявки: " + os.OfficeEmployeeFullName;
                 app.row3 = "Статус: " + ss.NameStatus;
                 app.Visible = "Visible";
-                if (app.Files == "" || app.Files == null)
-                {
-                    app.Img = @"..\img\picture.jpg";
-                }
-                else
-                {
-                    app.Img = @".." + app.Files;
-                }
+                //if (app.Files == "" || app.Files == null)
+                //{
+                //    app.Img = @"..\img\picture.jpg";
+                //}
+                //else
+                //{
+                //    app.Img = @".." + app.Files;
+                //}
                 if (app.Status.ToString() == "1")
                 {
                     app.Background = "#f08080";
@@ -48,6 +49,10 @@ namespace Diplom
                 if (app.Status.ToString() == "3")
                 {
                     app.Background = "#98FB98";
+                }
+                if(app.Files!=null)
+                {
+                    app.row5 = "Приложенных файлов: 1";
                 }
                 
             }
@@ -66,14 +71,14 @@ namespace Diplom
                 app.row4 = "Автор заявки: " + os.OfficeEmployeeFullName;
                 app.row3 = "Статус: " + ss.NameStatus;
                 app.Visible = "Collapsed";
-                if (app.Files == "" || app.Files == null)
-                {
-                    app.Img = @"..\img\picture.jpg";
-                }
-                else
-                {
-                    app.Img = @".." + app.Files;
-                }
+                //if (app.Files == "" || app.Files == null)
+                //{
+                //    app.Img = @"..\img\picture.jpg";
+                //}
+                //else
+                //{
+                //    app.Img = @".." + app.Files;
+                //}
                 if (app.Status.ToString() == "1")
                 {
                     app.Background = "#f08080";
@@ -85,6 +90,10 @@ namespace Diplom
                 if (app.Status.ToString() == "3")
                 {
                     app.Background = "#98FB98";
+                }
+                if (app.Files != null)
+                {
+                    app.row5 = "Приложенных файлов: 1";
                 }
 
             }
