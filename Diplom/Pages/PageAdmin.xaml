@@ -18,7 +18,7 @@
                         <TextBlock Text="{Binding row3}" TextWrapping="Wrap"></TextBlock>
                         <TextBlock Text="{Binding row4}" TextWrapping="Wrap"></TextBlock>
                         <StackPanel Height="20">
-                            <Button x:Name="btnEdit" Width="150" Content="Редактировать запись" Click="btnEdit_Click" Visibility="Visible"></Button>
+                            <Button x:Name="btnEdit" Tag="{Binding IDapplication}" Width="150" Content="Редактировать запись" Click="btnEdit_Click" Visibility="{Binding Visible}"></Button>
                         </StackPanel>
                     </StackPanel>
                     <Image Source="{Binding Img}" Width="100" Height="100"/>
@@ -37,9 +37,9 @@
         </ScrollViewer>
         <StackPanel Grid.Column="1">
             <GroupBox Header="Измените статус заявки" Name="gbStatus" Visibility="Hidden">
-                <ComboBox Width="200" Name="cbEditStatus" HorizontalAlignment="Left" Visibility="Hidden"></ComboBox>
+                <ComboBox Width="200" Name="cbEditStatus" HorizontalAlignment="Left" Visibility="Hidden" ></ComboBox>
             </GroupBox>
-            <Button x:Name="btnSave" Content="Сохранить" Width="100" HorizontalAlignment="Left" Margin="5" Visibility="Hidden"></Button>
+            <Button x:Name="btnSave" Content="Сохранить" Width="100" HorizontalAlignment="Left" Margin="5" Visibility="Hidden" Click="btnSave_Click"></Button>
         </StackPanel>
     </Grid>
 </Page>

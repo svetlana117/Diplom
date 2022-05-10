@@ -10,12 +10,12 @@
         <EntityTypeShape EntityType="Tarasova_DModel.OfficeStaff" Width="1.5" PointX="3" PointY="4.25" />
         <EntityTypeShape EntityType="Tarasova_DModel.Status" Width="1.5" PointX="3" PointY="9.75" />
         <EntityTypeShape EntityType="Tarasova_DModel.SystAdminStaff" Width="1.5" PointX="3" PointY="1.25" />
-        <EntityTypeShape EntityType="Tarasova_DModel.TypeProblem" Width="1.5" PointX="3" PointY="7.375" />
         <AssociationConnector Association="Tarasova_DModel.FK_Application_OfficeStaff" />
-        <AssociationConnector Association="Tarasova_DModel.FK_Application_TypeProblem" />
         <AssociationConnector Association="Tarasova_DModel.FK_Applications_Status" />
         <AssociationConnector Association="Tarasova_DModel.FK_OfficeStaff_Departments" />
         <AssociationConnector Association="Tarasova_DModel.FK_SystAdminStaff_Departments" />
+        <EntityTypeShape EntityType="Tarasova_DModel.TypeProblem" Width="1.5" PointX="5.375" PointY="0.875" />
+        <AssociationConnector Association="Tarasova_DModel.FK_Application_TypeProblem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

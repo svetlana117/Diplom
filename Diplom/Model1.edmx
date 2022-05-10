@@ -155,13 +155,8 @@
           <EntitySet Name="OfficeStaff" EntityType="Tarasova_DModel.OfficeStaff" />
           <EntitySet Name="Status" EntityType="Tarasova_DModel.Status" />
           <EntitySet Name="SystAdminStaff" EntityType="Tarasova_DModel.SystAdminStaff" />
-          <EntitySet Name="TypeProblem" EntityType="Tarasova_DModel.TypeProblem" />
           <AssociationSet Name="FK_Application_OfficeStaff" Association="Tarasova_DModel.FK_Application_OfficeStaff">
             <End Role="OfficeStaff" EntitySet="OfficeStaff" />
-            <End Role="Applications" EntitySet="Applications" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Application_TypeProblem" Association="Tarasova_DModel.FK_Application_TypeProblem">
-            <End Role="TypeProblem" EntitySet="TypeProblem" />
             <End Role="Applications" EntitySet="Applications" />
           </AssociationSet>
           <AssociationSet Name="FK_Applications_Status" Association="Tarasova_DModel.FK_Applications_Status">
@@ -176,6 +171,11 @@
             <End Role="Departments" EntitySet="Departments" />
             <End Role="SystAdminStaff" EntitySet="SystAdminStaff" />
           </AssociationSet>
+          <EntitySet Name="TypeProblem" EntityType="Tarasova_DModel.TypeProblem" />
+          <AssociationSet Name="FK_Application_TypeProblem" Association="Tarasova_DModel.FK_Application_TypeProblem">
+            <End Role="TypeProblem" EntitySet="TypeProblem" />
+            <End Role="Applications" EntitySet="Applications" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Applications">
           <Key>
@@ -188,8 +188,8 @@
           <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Int32" />
           <NavigationProperty Name="OfficeStaff" Relationship="Tarasova_DModel.FK_Application_OfficeStaff" FromRole="Applications" ToRole="OfficeStaff" />
-          <NavigationProperty Name="TypeProblem" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="Applications" ToRole="TypeProblem" />
           <NavigationProperty Name="Status1" Relationship="Tarasova_DModel.FK_Applications_Status" FromRole="Applications" ToRole="Status" />
+          <NavigationProperty Name="TypeProblem" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="Applications" ToRole="TypeProblem" />
         </EntityType>
         <EntityType Name="Departments">
           <Key>
@@ -231,14 +231,6 @@
           <Property Name="IDdepartment" Type="Int32" />
           <NavigationProperty Name="Departments" Relationship="Tarasova_DModel.FK_SystAdminStaff_Departments" FromRole="SystAdminStaff" ToRole="Departments" />
         </EntityType>
-        <EntityType Name="TypeProblem">
-          <Key>
-            <PropertyRef Name="IDtypeProblem" />
-          </Key>
-          <Property Name="IDtypeProblem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TypeProblem1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Applications" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="TypeProblem" ToRole="Applications" />
-        </EntityType>
         <Association Name="FK_Application_OfficeStaff">
           <End Type="Tarasova_DModel.OfficeStaff" Role="OfficeStaff" Multiplicity="0..1" />
           <End Type="Tarasova_DModel.Applications" Role="Applications" Multiplicity="*" />
@@ -248,18 +240,6 @@
             </Principal>
             <Dependent Role="Applications">
               <PropertyRef Name="IDofficeEmployee" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Application_TypeProblem">
-          <End Type="Tarasova_DModel.TypeProblem" Role="TypeProblem" Multiplicity="0..1" />
-          <End Type="Tarasova_DModel.Applications" Role="Applications" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeProblem">
-              <PropertyRef Name="IDtypeProblem" />
-            </Principal>
-            <Dependent Role="Applications">
-              <PropertyRef Name="IDproblemType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -296,6 +276,26 @@
             </Principal>
             <Dependent Role="SystAdminStaff">
               <PropertyRef Name="IDdepartment" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TypeProblem">
+          <Key>
+            <PropertyRef Name="IDtypeProblem" />
+          </Key>
+          <Property Name="IDtypeProblem" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeProblem1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Applications" Relationship="Tarasova_DModel.FK_Application_TypeProblem" FromRole="TypeProblem" ToRole="Applications" />
+        </EntityType>
+        <Association Name="FK_Application_TypeProblem">
+          <End Type="Tarasova_DModel.TypeProblem" Role="TypeProblem" Multiplicity="0..1" />
+          <End Type="Tarasova_DModel.Applications" Role="Applications" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeProblem">
+              <PropertyRef Name="IDtypeProblem" />
+            </Principal>
+            <Dependent Role="Applications">
+              <PropertyRef Name="IDproblemType" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

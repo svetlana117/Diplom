@@ -20,12 +20,26 @@ namespace Diplom.Pages
     /// </summary>
     public partial class PageAdmin : Page
     {
-        List<Applications> ListApplications = Applications.GetApplications();
-        public PageAdmin()
+        List<Applications> ListApplications = new List<Applications>();
+        List<Status> ListStatus = BaseConnect.BaseModel.Status.ToList();
+        SystAdminStaff CurrentUsers = new SystAdminStaff();
+        int IDapp = 0;
+        public PageAdmin(OfficeStaff CurrentUsers)
         {
             InitializeComponent();
+            ListApplications = Applications.GetApplications().Where(x=>x.IDofficeEmployee == CurrentUsers.IDofficeEmployee).ToList();
             lblisApplicationsList.ItemsSource = ListApplications;
             
+        }
+        public PageAdmin(SystAdminStaff CurrentUsers)
+        {
+            InitializeComponent();
+            this.CurrentUsers = CurrentUsers;
+            ListApplications = Applications.GetApplications(CurrentUsers);
+            lblisApplicationsList.ItemsSource = ListApplications;
+            cbEditStatus.ItemsSource = ListStatus;
+            cbEditStatus.DisplayMemberPath = "NameStatus";
+            cbEditStatus.SelectedValuePath = "IDstatus";
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -33,6 +47,21 @@ namespace Diplom.Pages
             gbStatus.Visibility = Visibility.Visible;
             cbEditStatus.Visibility = Visibility.Visible;
             btnSave.Visibility = Visibility.Visible;
+            Button button = (Button)sender;
+            IDapp = Convert.ToInt32(button.Tag);
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (cbEditStatus.SelectedItem != null)
+            {
+                Applications applications = BaseConnect.BaseModel.Applications.FirstOrDefault(x=>x.IDapplication == IDapp);
+                applications.Status =(int)cbEditStatus.SelectedValue;
+                BaseConnect.BaseModel.SaveChanges();
+                ListApplications = Applications.GetApplications(CurrentUsers);
+                lblisApplicationsList.ItemsSource = ListApplications;
+            }
+
         }
     }
 }

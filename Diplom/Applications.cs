@@ -22,7 +22,7 @@ namespace Diplom
         public Nullable<int> Status { get; set; }
     
         public virtual OfficeStaff OfficeStaff { get; set; }
-        public virtual TypeProblem TypeProblem { get; set; }
         public virtual Status Status1 { get; set; }
+        public virtual TypeProblem TypeProblem { get; set; }
     }
 }

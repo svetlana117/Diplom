@@ -20,9 +20,11 @@ namespace Diplom.Pages
     /// </summary>
     public partial class PageOffice : Page
     {
-        public PageOffice()
+        OfficeStaff CurrentUsers;
+        public PageOffice(OfficeStaff CurrentUsers)
         {
             InitializeComponent();
+            this.CurrentUsers = CurrentUsers;
         }
 
         private void btnContacts_Click(object sender, RoutedEventArgs e)
@@ -37,12 +39,12 @@ namespace Diplom.Pages
 
         private void btnApplication_Click(object sender, RoutedEventArgs e)
         {
-            LoadPages.MainFrame.Navigate(new PageApplication());
+            LoadPages.MainFrame.Navigate(new PageApplication(CurrentUsers));
         }
 
         private void btnMyApplication_Click(object sender, RoutedEventArgs e)
         {
-            LoadPages.MainFrame.Navigate(new PageAdmin());
+            LoadPages.MainFrame.Navigate(new PageAdmin(CurrentUsers));
         }
     }
 }

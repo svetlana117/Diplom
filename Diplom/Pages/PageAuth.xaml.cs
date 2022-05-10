@@ -35,13 +35,13 @@ namespace Diplom.Pages
                 if (CurrentUsers != null)
                 {
                     MessageBox.Show("Вы зашли как обычный пользователь");
-                    LoadPages.MainFrame.Navigate(new PageOffice());
+                    LoadPages.MainFrame.Navigate(new PageOffice(CurrentUsers));
 
                 }
                 else if (CurrentUsers2 != null)
                 {
                     MessageBox.Show("Вы зашли как системный администратор ");
-                    LoadPages.MainFrame.Navigate(new PageAdmin());
+                    LoadPages.MainFrame.Navigate(new PageAdmin(CurrentUsers2));
                 }
                 else
                 {
