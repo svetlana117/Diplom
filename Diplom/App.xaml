@@ -24,6 +24,9 @@
             <Setter Property="Foreground" Value="White"></Setter>
             <Setter Property="BorderBrush" Value="White"></Setter>
         </Style>
+        <Style x:Key="btn2" TargetType="Button">
+            <Setter Property="Background" Value="White"></Setter>
+        </Style>
         
     </Application.Resources>
 </Application>
