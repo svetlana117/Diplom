@@ -81,7 +81,7 @@ namespace Diplom.Pages
 
         private void btnMyApplication_Click(object sender, RoutedEventArgs e)
         {
-            LoadPages.MainFrame.Navigate(new PageAdmin());
+            LoadPages.MainFrame.Navigate(new PageAdmin(CurrentUsers));
         }
     }
 }
