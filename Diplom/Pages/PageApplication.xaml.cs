@@ -79,6 +79,9 @@ namespace Diplom.Pages
             LoadPages.MainFrame.Navigate(new PageAuth());
         }
 
-        
+        private void btnMyApplication_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPages.MainFrame.Navigate(new PageAdmin());
+        }
     }
 }

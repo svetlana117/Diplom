@@ -41,14 +41,14 @@
                 <GroupBox Header="Поиск по описанию проблемы" Width="255" HorizontalAlignment="Left">
                     <TextBox x:Name="TextFilter" Width="240" Height="30" TextChanged="TextFilter_TextChanged"/>
                 </GroupBox>
-                <GroupBox Header="Фильтр по статусу" Width="255" HorizontalAlignment="Left">
+                <!--<GroupBox Header="Фильтр по статусу" Width="255" HorizontalAlignment="Left">
                     <ComboBox x:Name="FilterStatus"  Height="30"  BorderBrush="Black" Width="200" Text="Фильтрация по статусу" Margin="5" HorizontalAlignment="Left" SelectionChanged="FilterStatus_SelectionChanged">
                     </ComboBox>
                 </GroupBox>
                 <GroupBox Header="Фильтр по типу проблемы" Width="255" HorizontalAlignment="Left">
                     <ComboBox x:Name="FilterProblem"  Height="30"  BorderBrush="Black" Width="200" Text="Фильтрация по статусу" Margin="5" HorizontalAlignment="Left" SelectionChanged="FilterProblem_SelectionChanged">
                     </ComboBox>
-                </GroupBox>
+                </GroupBox>-->
                 
             </StackPanel>
             <GroupBox Header="Измените статус заявки" Name="gbStatus" Visibility="Hidden">

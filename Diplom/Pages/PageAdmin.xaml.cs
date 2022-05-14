@@ -40,8 +40,8 @@ namespace Diplom.Pages
             {
                 statusType.Add(s.NameStatus);
             }
-            FilterStatus.ItemsSource = statusType.ToList();
-            FilterStatus.SelectedIndex = 0;
+            //FilterStatus.ItemsSource = statusType.ToList();
+            //FilterStatus.SelectedIndex = 0;
 
             List<string> problemType = new List<string>();
             List<TypeProblem> P = BaseConnect.BaseModel.TypeProblem.ToList();
@@ -49,8 +49,8 @@ namespace Diplom.Pages
             {
                 problemType.Add(p.TypeProblem1);
             }
-            FilterProblem.ItemsSource = problemType.ToList();
-            FilterProblem.SelectedIndex = 0;
+            //FilterProblem.ItemsSource = problemType.ToList();
+            //FilterProblem.SelectedIndex = 0;
 
         }
         public PageAdmin(SystAdminStaff CurrentUsers)
@@ -69,8 +69,8 @@ namespace Diplom.Pages
             {
                 statusType.Add(s.NameStatus);
             }
-            FilterStatus.ItemsSource = statusType.ToList();
-            FilterStatus.SelectedIndex = 0;
+            //FilterStatus.ItemsSource = statusType.ToList();
+            //FilterStatus.SelectedIndex = 0;
 
             List<string> problemType = new List<string>();
             List<TypeProblem> P = BaseConnect.BaseModel.TypeProblem.ToList();
@@ -78,8 +78,8 @@ namespace Diplom.Pages
             {
                 problemType.Add(p.TypeProblem1);
             }
-            FilterProblem.ItemsSource = problemType.ToList();
-            FilterProblem.SelectedIndex = 0;
+            //FilterProblem.ItemsSource = problemType.ToList();
+            //FilterProblem.SelectedIndex = 0;
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
@@ -158,28 +158,28 @@ namespace Diplom.Pages
             lblisApplicationsList.ItemsSource = ListApplications;
         }
 
-        private void FilterStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (f)
-            {
-                Filter(CurrentUsers);
-            }
-            else
-            {
-                Filter();
-            }
-        }
+        //private void FilterStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (f)
+        //    {
+        //        Filter(CurrentUsers);
+        //    }
+        //    else
+        //    {
+        //        Filter();
+        //    }
+        //}
 
-        private void FilterProblem_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (f)
-            {
-                Filter(CurrentUsers);
-            }
-            else
-            {
-                Filter();
-            }
-        }
+        //private void FilterProblem_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    if (f)
+        //    {
+        //        Filter(CurrentUsers);
+        //    }
+        //    else
+        //    {
+        //        Filter();
+        //    }
+        //}
     }
 }
