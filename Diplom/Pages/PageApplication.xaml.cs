@@ -65,6 +65,11 @@ namespace Diplom.Pages
                     BaseConnect.BaseModel.SaveChanges();
                     MessageBox.Show("Заявка отправлена");
                 }
+                else
+                {
+                    MessageBox.Show("Описание проблемы не может быть пустым");
+                }
+
             }
             catch (Exception ex) { MessageBox.Show("Поля не могут быть пустыми"); }
         }
